@@ -1,0 +1,41 @@
+{
+  "name": "videogame-sales-dashboard",
+  "version": "1.0.0",
+  "description": "Simple dashboard to understand videogame sales data",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "python3 -m http.server 8000",
+    "dev": "live-server --port=8000 --open=index.html",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Saad-Huss41/Videogame-Sales.git"
+  },
+  "keywords": [
+    "videogames",
+    "sales",
+    "dashboard",
+    "data-visualization",
+    "analytics",
+    "gaming",
+    "charts"
+  ],
+  "author": "Saad-Huss41",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "chart.js": "^3.9.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
