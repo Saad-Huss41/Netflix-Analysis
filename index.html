@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videogame Sales Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Videogame Sales Dashboard</h1>
+            <p>Comprehensive analysis of videogame sales data</p>
+        </header>
+
+        <main class="dashboard">
+            <!-- Key Metrics Section -->
+            <section class="metrics-section">
+                <h2>Key Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Total Sales</h3>
+                        <div class="metric-value" id="total-sales">Loading...</div>
+                        <span class="metric-unit">Million Units</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Top Platform</h3>
+                        <div class="metric-value" id="top-platform">Loading...</div>
+                        <span class="metric-unit">Best Selling Console</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Top Genre</h3>
+                        <div class="metric-value" id="top-genre">Loading...</div>
+                        <span class="metric-unit">Most Popular</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Total Games</h3>
+                        <div class="metric-value" id="total-games">Loading...</div>
+                        <span class="metric-unit">Unique Titles</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="chart-container">
+                    <h3>Sales by Platform</h3>
+                    <canvas id="platformChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Sales by Genre</h3>
+                    <canvas id="genreChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Sales Trends Over Time</h3>
+                    <canvas id="timeChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Regional Sales Distribution</h3>
+                    <canvas id="regionChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Top Games Section -->
+            <section class="top-games-section">
+                <h2>Top Selling Games</h2>
+                <div class="table-container">
+                    <table id="top-games-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Game</th>
+                                <th>Platform</th>
+                                <th>Genre</th>
+                                <th>Global Sales (M)</th>
+                                <th>Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Data Upload Section -->
+            <section class="upload-section">
+                <h2>Data Management</h2>
+                <div class="upload-container">
+                    <input type="file" id="csv-upload" accept=".csv" />
+                    <label for="csv-upload" class="upload-label">
+                        Choose CSV File or drag and drop
+                    </label>
+                    <button id="load-sample-data" class="btn-secondary">Load Sample Data</button>
+                </div>
+                <div class="data-info">
+                    <p>Expected CSV format: Name, Platform, Year, Genre, Publisher, NA_Sales, EU_Sales, JP_Sales, Other_Sales, Global_Sales</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Videogame Sales Dashboard. Data visualization for gaming industry insights.</p>
+        </footer>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
