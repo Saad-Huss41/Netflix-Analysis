@@ -192,15 +192,58 @@ class VideogameDashboard {
     }
 
     updateCharts() {
-        this.createPlatformChart();
-        this.createGenreChart();
-        this.createTimeChart();
-        this.createRegionChart();
+        // Check if Chart.js is available
+        if (typeof Chart !== 'undefined') {
+            this.createPlatformChart();
+            this.createGenreChart();
+            this.createTimeChart();
+            this.createRegionChart();
+        } else {
+            // Display fallback message for charts
+            this.showChartFallbacks();
+        }
+    }
+
+    showChartFallbacks() {
+        const chartContainers = document.querySelectorAll('.chart-container canvas');
+        chartContainers.forEach((canvas, index) => {
+            const container = canvas.parentElement;
+            
+            // Check if fallback already exists
+            if (container.querySelector('.chart-fallback')) return;
+            
+            const fallbackDiv = document.createElement('div');
+            fallbackDiv.className = 'chart-fallback';
+            fallbackDiv.style.cssText = `
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #f8f9fa;
+                border: 2px dashed #dee2e6;
+                border-radius: 5px;
+                flex-direction: column;
+                text-align: center;
+                color: #6c757d;
+            `;
+            
+            const chartNames = ['Platform Sales', 'Genre Distribution', 'Sales Timeline', 'Regional Breakdown'];
+            
+            fallbackDiv.innerHTML = `
+                <div style="font-size: 48px; margin-bottom: 10px;">📊</div>
+                <div style="font-weight: bold; margin-bottom: 5px;">${chartNames[index]} Chart</div>
+                <div style="font-size: 14px;">Chart.js library will load visualizations here</div>
+                <div style="font-size: 12px; margin-top: 5px; opacity: 0.7;">Ready for data visualization</div>
+            `;
+            
+            canvas.style.display = 'none';
+            container.appendChild(fallbackDiv);
+        });
     }
 
     createPlatformChart() {
         const ctx = document.getElementById('platformChart');
-        if (!ctx) return;
+        if (!ctx || typeof Chart === 'undefined') return;
 
         // Destroy existing chart
         if (this.charts.platform) {
@@ -243,7 +286,7 @@ class VideogameDashboard {
 
     createGenreChart() {
         const ctx = document.getElementById('genreChart');
-        if (!ctx) return;
+        if (!ctx || typeof Chart === 'undefined') return;
 
         if (this.charts.genre) {
             this.charts.genre.destroy();
@@ -281,7 +324,7 @@ class VideogameDashboard {
 
     createTimeChart() {
         const ctx = document.getElementById('timeChart');
-        if (!ctx) return;
+        if (!ctx || typeof Chart === 'undefined') return;
 
         if (this.charts.time) {
             this.charts.time.destroy();
@@ -324,7 +367,7 @@ class VideogameDashboard {
 
     createRegionChart() {
         const ctx = document.getElementById('regionChart');
-        if (!ctx) return;
+        if (!ctx || typeof Chart === 'undefined') return;
 
         if (this.charts.region) {
             this.charts.region.destroy();
