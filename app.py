@@ -21,7 +21,7 @@ def load_data(path):
     return df
 
 
-data = load_data('/workspaces/Videogame-Sales/data/netflix_titles.csv')
+data = load_data('data/netflix_titles.csv')
 
 st.title("🎬 Netflix Content Dashboard")
 
