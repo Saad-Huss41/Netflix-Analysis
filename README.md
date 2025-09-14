@@ -1,2 +1,2 @@
-# Videogame-Sales
-Simple dashboard to understand videogame sales data
+# Netflix Analysis
+Simple dashboard to understand Netflix Movie and TV Show data
